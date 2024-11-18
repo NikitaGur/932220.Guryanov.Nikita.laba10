@@ -1,0 +1,104 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100%;
+    background-color: #000;
+}
+#curtain {
+    background-image: url('images/curtain.jpg');
+    background-size: cover;
+    background-position: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.2s ease, top 1s ease;
+    z-index: 5;
+}
+#curtain:hover {
+    transform: translateY(-5%);
+}
+#curtain.hidden {
+    top: -100%;
+}
+.lamp {
+    position: fixed;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    height: 300px;
+    background: url('images/lamp.jpg') no-repeat center center;
+    background-size: contain;
+    cursor: pointer;
+    z-index: 4;
+}
+.light {
+    position: absolute;
+    top: 28.5%;
+    left: calc(50% + 2px);
+    transform: translateX(-50%) scaleX(0);
+    width: 82px;
+    height: 0;
+    border-top: none;
+    border-left: 600px solid transparent;
+    border-right: 600px solid transparent;
+    border-bottom: 750px solid rgba(255, 255, 0, 0.5);
+    transition: transform 1s ease-in-out;
+    z-index: -1;
+    pointer-events: none;
+}
+.lamp.active .light {
+    transform: translateX(-50%) scaleX(1);
+}
+.stage {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    background: black;
+    overflow: hidden;
+}
+.stage img {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1s ease-in-out;
+}
+.lamp.active + .stage img {
+    opacity: 1;
+    pointer-events: auto;
+}
+.magician {
+    right: 50%;
+    bottom: 10%;
+    width: 400px;
+    height: auto;
+    z-index: 3;
+}
+.hat {
+    left: 55%;
+    bottom: 15%;
+    width: 150px;
+    height: auto;
+    z-index: 3;
+}
+.rabbit {
+    bottom: 30%;
+    width: 50px;
+    left: 57.5%;
+    height: auto;
+    z-index: 2;
+}
+.dove {
+    bottom: 30%;
+    width: 50px;
+    left: 57.5%;
+    height: auto;
+    transform: translateY(100px);
+    z-index: 2;
+}
